@@ -3,6 +3,7 @@ import Landing from './componants/Landing'
 import Highlights from './componants/Highlights'
 import './index.css';
 import Featured from './componants/Featured';
+import Discounted from './componants/Discounted';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Landing />
       <Highlights />
       <Featured />
+      <Discounted />
     </div>
   )
 }
