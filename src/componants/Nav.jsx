@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LibraryLogo from '../assets/Library.svg';
+import '../index.css';
+
 
 const Nav = () => {
   return (
@@ -14,7 +16,7 @@ const Nav = () => {
             <a href="" className='nav__link'>Home</a>
           </li>
           <li className='nav__list'>
-            <a href="" className='nav__link'>Books</a>
+            <a href="" className='nav__link nav__link--books'>Books</a>
           </li>
           <button className='btn__menu'>
             <FontAwesomeIcon icon="bars" />
