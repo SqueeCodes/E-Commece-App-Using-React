@@ -4,6 +4,8 @@ import Highlights from './componants/Highlights'
 import './index.css';
 import Featured from './componants/Featured';
 import Discounted from './componants/Discounted';
+import Explore from './componants/Explore';
+import Footer from './componants/Footer'
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
       <Highlights />
       <Featured />
       <Discounted />
+      <Explore />
+      <Footer />
     </div>
   )
 }
