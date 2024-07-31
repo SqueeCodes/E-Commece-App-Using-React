@@ -430,6 +430,7 @@ FEATURES
   border-radius: 4px;
   overflow: hidden;
   display: flex;
+  box-shadow: #242424 2px 2px 12px 2px;
 }
 
 .book__title {

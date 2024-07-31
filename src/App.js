@@ -1,25 +1,22 @@
 import Nav from './componants/Nav';
-import Landing from './componants/Landing'
-import Highlights from './componants/Highlights'
 import './index.css';
-import Featured from './componants/Featured';
-import Discounted from './componants/Discounted';
-import Explore from './componants/Explore';
+import Home from './Pages/Home';
 import Footer from './componants/Footer'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 function App() {
   return (
-    <div className='App'>
-      <Nav />
-      <Landing />
-      <Highlights />
-      <Featured />
-      <Discounted />
-      <Explore />
-      <Footer />
-    </div>
-  )
-}
+    <Router>
+      <div className='App'>
+        <Route />
+        <Nav />
+        <Home />
+        <Footer />
+      </div>
+    </Router>
+
+  );
+};
 
 export default App;
