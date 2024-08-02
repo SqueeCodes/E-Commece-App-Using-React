@@ -17,8 +17,7 @@ function App(book) {
         <Nav />
         <Route path="/" exact component={Home} />
         <Route path="/Books" exact render={() => <Books books={books} />} />
-        <Route path={`/books/${book.id}`} render={() => <BookInfo books={books} />} />
-        <Footer />
+        <Route path="/books/:id" render={() => <BookInfo books={books} />} />        <Footer />
       </div>
     </Router>
 
