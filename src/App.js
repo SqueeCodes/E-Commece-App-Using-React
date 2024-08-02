@@ -10,14 +10,14 @@ import Book from './componants/UI/Book';
 
 
 
-function App(Book) {
+function App(book) {
   return (
     <Router>
       <div className='App'>
         <Nav />
         <Route path="/" exact component={Home} />
         <Route path="/Books" exact render={() => <Books books={books} />} />
-        <Route path={`/books/${Book.id}`} render={() => <BookInfo books={books} />} />
+        <Route path={`/books/${book.id}`} render={() => <BookInfo books={books} />} />
         <Footer />
       </div>
     </Router>

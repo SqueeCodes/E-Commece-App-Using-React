@@ -4,7 +4,8 @@ import Ratings from "../componants/UI/Ratings";
 import Price from "../componants/UI/Price";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import books from "../data";
+import { books, url, title, rating } from "../data";
+
 
 const BookInfo = ({ books, addItemToCart }) => {
   const { id } = useParams();
