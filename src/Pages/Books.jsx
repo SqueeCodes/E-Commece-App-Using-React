@@ -57,9 +57,9 @@ const Books = ({ books: initialBooks }) => {
                 </select>
               </div>
               <div className="books">
-                {books.map((book) => (
-                  <Book book={book} key={book.id} />
-                ))}
+              {books && books.map((book) => {
+                  return <Book book={book} key={book.id} />;
+                })}
               </div>
             </div>
           </div>
