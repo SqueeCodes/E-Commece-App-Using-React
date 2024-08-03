@@ -586,7 +586,7 @@ select {
 }
 
 .book__selected--img {
-  max-height: 500px;
+  max-height: 350px;
   width: auto;
   max-width: 100%;
 }
@@ -635,6 +635,7 @@ select {
 
 .book__summary--para {
   margin-bottom: 16px;
+  padding-right: 50px;
 }
 
 .book__price {

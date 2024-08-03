@@ -56,6 +56,7 @@ const BookInfo = ({ books }) => {
                     saepe alias, quas officiis autem enim totam.
                   </p>
                 </div>
+                <button className="btn">Add to cart</button>
               </div>
             </div>
           </div>
