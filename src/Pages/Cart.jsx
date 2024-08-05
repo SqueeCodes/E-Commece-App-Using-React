@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EmptyCart from "../assets/empty_cart.svg";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
-const Cart = ({ cart, changeQuantity, removeItem }) => {
+const Cart = ({ cart, changeQuantity, removeItem, totals }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
@@ -113,6 +113,3 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
 };
 
 export default Cart;
-
-
-

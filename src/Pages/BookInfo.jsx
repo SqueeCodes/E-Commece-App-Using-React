@@ -4,16 +4,17 @@ import Ratings from "../componants/UI/Ratings";
 import Price from "../componants/UI/Price";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import BestBooks from "../componants/UI/BestBooks";
+import Book from "../componants/UI/Book";
 
-
-const BookInfo = ({ books }) => {
+const BookInfo = ({ books, addItemToCart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
   const [added, setAdded] = useState(false);
-  console.log(books);
 
   function addBookToCart(book) {
     setAdded(true);
+    addItemToCart(book);
   }
 
   return (
@@ -59,9 +60,13 @@ const BookInfo = ({ books }) => {
                     voluptas.
                   </p>
                 </div>
-                <button className="btn" onClick={() => addBookToCart(book)}>
-                  Add to Cart
-                </button>
+                {added ? (
+                  <button className="btn">Checkout</button>
+                ) : (
+                  <button className="btn" onClick={() => addBookToCart(book)}>
+                    Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -71,6 +76,13 @@ const BookInfo = ({ books }) => {
             <div className="book__selected--top">
               <h2 className="book__selected--title--top">Recommended Books</h2>
             </div>
+          </div>
+          <div className="books">
+            {books
+              .filter((book) => book.rating === 5 && book.id != id)
+              .slice(0, 4)
+              .map((book) => <Book book={book} key={book.id} />
+              )}
           </div>
         </div>
       </main>

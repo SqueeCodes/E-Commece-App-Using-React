@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 function App(book) {
   const [cart, setCart] = useState([]);
 
-  function addToCart(book) {
+  function addItemToCart(book) {
     setCart([...cart, { ...book, quantity: 1 }]);
   }
 
@@ -54,7 +54,7 @@ function App(book) {
         <Route path="/Books" exact render={() => <Books books={books} />} />
         <Route
           path="/books/:id"
-          render={() => <BookInfo books={books} addToCart={addToCart} />}
+          render={() => <BookInfo books={books} addItemToCart={addItemToCart} />}
         />
         <Route
           path="/cart"
