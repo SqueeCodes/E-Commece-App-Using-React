@@ -271,6 +271,7 @@ header {
 
 .books__container {
   padding: 24px 0;
+
 }
 
 .row {
@@ -374,7 +375,9 @@ FEATURES
 .books {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -24px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .book {
@@ -388,8 +391,8 @@ FEATURES
 }
 
 .book__img {
+  width: 100%;
   max-height: 320px;
-  max-width: 250px;
   transition: all 300ms ease;
 }
 
@@ -428,6 +431,7 @@ FEATURES
 .book__img--wrapper {
   margin-bottom: 8px;
   border-radius: 4px;
+  max-width: 240px;
   overflow: hidden;
   display: flex;
   box-shadow: #242424 2px 2px 12px 2px;
@@ -605,7 +609,7 @@ select {
   font-size: 32px;
   color: #242424;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .book__selected--link {

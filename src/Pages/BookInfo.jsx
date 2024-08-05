@@ -4,17 +4,19 @@ import Ratings from "../componants/UI/Ratings";
 import Price from "../componants/UI/Price";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import BestBooks from "../componants/UI/BestBooks";
+// import BestBooks from "../componants/UI/BestBooks";
 import Book from "../componants/UI/Book";
 
-const BookInfo = ({ books, addItemToCart }) => {
+const BookInfo = ({ books, addItemToCart, cart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
-  const [added, setAdded] = useState(false);
 
-  function addBookToCart(book) {
-    setAdded(true);
+  function addItemToCart(book) {
     addItemToCart(book);
+  }
+
+  function bookExistsOnCart() {
+    return cart.find((item) => item.id === +id);
   }
 
   return (
@@ -60,10 +62,12 @@ const BookInfo = ({ books, addItemToCart }) => {
                     voluptas.
                   </p>
                 </div>
-                {added ? (
-                  <button className="btn">Checkout</button>
+                {bookExistsOnCart() ? (
+                  <Link to={`/cart`} className="book__link">
+                    <button className="btn">Checkout</button>
+                  </Link>
                 ) : (
-                  <button className="btn" onClick={() => addBookToCart(book)}>
+                  <button className="btn" onClick={() => addItemToCart(book)}>
                     Add to Cart
                   </button>
                 )}
@@ -81,8 +85,9 @@ const BookInfo = ({ books, addItemToCart }) => {
             {books
               .filter((book) => book.rating === 5 && book.id != id)
               .slice(0, 4)
-              .map((book) => <Book book={book} key={book.id} />
-              )}
+              .map((book) => (
+                <Book book={book} key={book.id} />
+              ))}
           </div>
         </div>
       </main>

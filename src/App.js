@@ -58,14 +58,14 @@ function App(book) {
         />
         <Route
           path="/cart"
-          render={() => (
+          render={() => 
             <Cart
               books={books}
               cart={cart}
               changeQuantity={changeQuantity}
               removeItem={removeItem}
             />
-          )}
+          }
         />
       </div>
       <Footer />
