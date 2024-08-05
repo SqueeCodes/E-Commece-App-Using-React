@@ -113,3 +113,6 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
 };
 
 export default Cart;
+
+
+
