@@ -68,7 +68,7 @@ const BookInfo = ({ books, addItemToCart, cart }) => {
                     voluptas.
                   </p>
                 </div>
-                {bookExistsOnCart() && !added && (
+                {!bookExistsOnCart() && !added && (
                   <button
                     className="btn"
                     onClick={() => handleAddItemToCart(book)}
@@ -78,7 +78,7 @@ const BookInfo = ({ books, addItemToCart, cart }) => {
                 )}
                 {bookExistsOnCart() && (
                   <Link to="/cart" className="book__link">
-                    <button className="btn">Checkout</button>
+                    <button className="btn">Go to cart</button>
                   </Link>
                 )}
               </div>
