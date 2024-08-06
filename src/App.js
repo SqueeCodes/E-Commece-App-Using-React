@@ -10,16 +10,24 @@ import Book from "./componants/UI/Book";
 import Cart from "./Pages/Cart";
 import { useEffect, useState } from "react";
 
-function App(book) {
+function App() {
   const [cart, setCart] = useState([]);
 
-  function addToCart(book) {
-    setCart([...cart, { ...book, quantity: 1 }]);
+  function addItemToCart(book) {
+    setCart((prevCart) => {
+      const bookExists = prevCart.find((item) => item.id === book.id);
+      if (bookExists) {
+        return prevCart.map((item) =>
+          item.id === book.id ? { ...item, quuantity: item.quantity + 1 } : item
+        );
+      }
+      return [...prevCart, { ...book, quantity: 1 }];
+    });
   }
 
   function changeQuantity(book, quantity) {
-    setCart(
-      cart.map((item) =>
+    setCart((prevCart) =>
+      prevCart.map((item) =>
         item.id === book.id
           ? {
               ...item,
@@ -31,15 +39,11 @@ function App(book) {
   }
 
   function removeItem(item) {
-    setCart(cart.filter(book => book.id !== item.id))
+    setCart((prevCart) => prevCart.filter((book) => book.id !== item.id));
   }
 
   function numberOfItems() {
-    let counter = 0;
-    cart.forEach(item => {
-      counter += item.quantity
-    })
-    return counter;
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
   }
 
   useEffect(() => {
@@ -51,21 +55,28 @@ function App(book) {
       <div className="App">
         <Nav numberOfItems={numberOfItems()} />
         <Route path="/" exact component={Home} />
-        <Route path="/Books" exact render={() => <Books books={books} cart={cart}/>} />
+        <Route path="/Books" exact render={() => <Books books={books} />} />
         <Route
           path="/books/:id"
-          render={() => <BookInfo books={books} addToCart={addToCart} />}
+          render={(props) => (
+            <BookInfo
+              {...props}
+              books={books}
+              cart={cart}
+              addItemToCart={addItemToCart}
+            />
+          )}
         />
         <Route
           path="/cart"
-          render={() => 
+          render={() => (
             <Cart
               books={books}
               cart={cart}
               changeQuantity={changeQuantity}
               removeItem={removeItem}
             />
-          }
+          )}
         />
       </div>
       <Footer />

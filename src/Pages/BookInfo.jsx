@@ -7,16 +7,22 @@ import { Link } from "react-router-dom";
 // import BestBooks from "../componants/UI/BestBooks";
 import Book from "../componants/UI/Book";
 
-const BookInfo = ({ books, addToCart, cart }) => {
+const BookInfo = ({ books, addItemToCart, cart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
+  const [added, setAdded] = useState(false);
 
-  function addBookToCart(book) {
-    addToCart(book);
+  function handleAddItemToCart(book) {
+    addItemToCart(book);
+    setAdded(true);
   }
 
   function bookExistsOnCart() {
-    return cart.find((book) => book.id === +id);
+    return cart.find((item) => item.id === +id);
+  }
+
+  if (!book) {
+    return <div>Book not found</div>;
   }
 
   return (
@@ -62,14 +68,18 @@ const BookInfo = ({ books, addToCart, cart }) => {
                     voluptas.
                   </p>
                 </div>
-                {bookExistsOnCart() ? (
-                  <Link to={`/cart`} className="book__link">
-                    <button className="btn">Checkout</button>
-                  </Link>
-                ) : (
-                  <button className="btn" onClick={() => addBookToCart(book)}>
+                {bookExistsOnCart() && !added && (
+                  <button
+                    className="btn"
+                    onClick={() => handleAddItemToCart(book)}
+                  >
                     Add to Cart
                   </button>
+                )}
+                {bookExistsOnCart() && (
+                  <Link to="/cart" className="book__link">
+                    <button className="btn">Checkout</button>
+                  </Link>
                 )}
               </div>
             </div>
