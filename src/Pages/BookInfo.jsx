@@ -7,16 +7,16 @@ import { Link } from "react-router-dom";
 // import BestBooks from "../componants/UI/BestBooks";
 import Book from "../componants/UI/Book";
 
-const BookInfo = ({ books, addItemToCart, cart }) => {
+const BookInfo = ({ books, addToCart, cart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
 
-  function addItemToCart(book) {
-    addItemToCart(book);
+  function addBookToCart(book) {
+    addToCart(book);
   }
 
   function bookExistsOnCart() {
-    return cart.find((item) => item.id === +id);
+    return cart.find((book) => book.id === +id);
   }
 
   return (
@@ -67,7 +67,7 @@ const BookInfo = ({ books, addItemToCart, cart }) => {
                     <button className="btn">Checkout</button>
                   </Link>
                 ) : (
-                  <button className="btn" onClick={() => addItemToCart(book)}>
+                  <button className="btn" onClick={() => addBookToCart(book)}>
                     Add to Cart
                   </button>
                 )}
