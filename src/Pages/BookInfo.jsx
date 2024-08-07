@@ -12,13 +12,12 @@ const BookInfo = ({ books, addItemToCart, cart }) => {
   const book = books.find((book) => +book.id === +id);
   const [added, setAdded] = useState(false);
 
-  function handleAddItemToCart(book) {
+  function AddBookToCart(book) {
     addItemToCart(book);
-    setAdded(true);
   }
 
   function bookExistsOnCart() {
-    return cart.find((item) => item.id === +id);
+    return cart.find((book) => book.id === +id);
   }
 
   if (!book) {
@@ -68,18 +67,14 @@ const BookInfo = ({ books, addItemToCart, cart }) => {
                     voluptas.
                   </p>
                 </div>
-                {!bookExistsOnCart() && !added && (
-                  <button
-                    className="btn"
-                    onClick={() => handleAddItemToCart(book)}
-                  >
+                {bookExistsOnCart() ? (
+                  <Link to="/cart" className="book__link">
+                    <button className="btn">Checkout</button>
+                  </Link>
+                ) : (
+                  <button className="btn" onClick={() => AddBookToCart(book)}>
                     Add to Cart
                   </button>
-                )}
-                {bookExistsOnCart() && (
-                  <Link to="/cart" className="book__link">
-                    <button className="btn">Go to cart</button>
-                  </Link>
                 )}
               </div>
             </div>

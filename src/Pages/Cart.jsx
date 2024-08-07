@@ -6,7 +6,7 @@ const Cart = ({ cart, changeQuantity, removeItem, totals }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
-      price = +((item.salePrice || item.originalPrice) * item.quantity);
+      price += +((item.salePrice || item.originalPrice) * item.quantity);
     });
     return price;
   };
